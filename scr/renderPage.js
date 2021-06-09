@@ -14,17 +14,11 @@ export function renderMainPage(page, object) {
       const keys = Object.keys(object);
       const newKeys = keys.filter((el) => el != "id");
 
-      console.log($inputs);
-      console.log(newKeys);
-      const valuesObject = {};
-
       newKeys.forEach((element) => {
         $inputs.forEach((input) => {
           if (input.name === element) {
             setTimeout(() => {
               input.value = object[element];
-              console.log(input);
-              console.log(object[element]);
             }, 500);
           }
         });
