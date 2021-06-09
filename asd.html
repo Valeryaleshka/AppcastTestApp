@@ -1,0 +1,75 @@
+<form id="flightsEditForm" class="edited-form" enctype="multipart/form-data">
+    <section class="user-selected-dates">
+        <div class="form-group">
+            <div class="calendar_container">
+                <label>Start Date</label>
+                <input type="date" class="form-input" id="firstDate" name="firstDate" data-validators="requiered">
+                <div class="form-group--error-container">
+                    <span class="error-message error-message--requiered">Select start date</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="calendar_container">
+                <label>Start Date</label>
+                <input type="date" class="form-input" id="secondDate" name="secondDate" data-validators="requiered">
+                <div class="form-group--error-container">
+                    <span class="error-message error-message--requiered">Select start date</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <p>From</p>
+    <section class="location-form-container">
+        <div class="form-group">
+            <div class="country-picker-container">
+                <label>Choose country:</label>
+                <select id="countryFromPicker" class="country country-picker form-input" name="countryFrom"
+                    data-validators="requiered">
+                </select>
+                <div class="form-group--error-container">
+                    <span class="error-message error-message--requiered">Select location</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="country-picker-container">
+                <label>Choose country:</label>
+                <select id="cityFromPicker" class="country-picker form-input" name="cityFrom"
+                    data-validators="requiered">
+                </select>
+                <div class="form-group--error-container">
+                    <span class="error-message error-message--requiered">Select location</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <p>To</p>
+    <section class="location-form-container">
+        <div class="form-group">
+            <div class="country-picker-container">
+                <label>Choose country:</label>
+                <select id="countryToPicker" class="country country-picker form-input" name="countryTo"
+                    data-validators="requiered">
+                </select>
+                <div class="form-group--error-container">
+                    <span class="error-message error-message--requiered">Select location</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="country-picker-container">
+                <label>Choose country:</label>
+                <select id="cityToPicker" class="country-picker form-input" name="cityTo" data-validators="requiered">
+                </select>
+                <div class="form-group--error-container">
+                    <span class="error-message error-message--requiered">Select location</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="buttons">
+        <button id='clearAll'>Clear</button>
+        <input type="submit" value="Search" id='submitForm'>
+    </section>

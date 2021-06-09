@@ -1,0 +1,248 @@
+body {
+  margin: 0;
+  background-color: rgb(117, 117, 117);
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.form-group--error-container {
+  position: absolute;
+  color: rgb(124, 2, 2);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(100%);
+  font-size: 14px;
+  line-height: 20px;
+  height: 20px;
+  overflow: hidden;
+}
+
+.error-message {
+  position: absolute;
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
+
+.error-message--requiered {
+  opacity: 1;
+}
+
+.form-group.has-error .error-message {
+  transform: translateX(0);
+}
+
+.location-label {
+  margin-left: 20px;
+}
+
+.edited-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.amenities_container {
+  display: flex;
+  flex-direction: column;
+  select {
+    width: 120px;
+  }
+}
+
+.calendar_container {
+  position: relative;
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.choose-car-container {
+  display: flex;
+  flex-direction: column;
+  select {
+    width: 120px;
+  }
+}
+
+.location-form-container {
+  position: relative;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.user-selected-dates {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+header {
+  padding: 50px;
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.header_item {
+  position: relative;
+  margin-right: 30px;
+  font-size: large;
+  transition: 0.3s ease-in-out;
+  &:hover {
+    cursor: pointer;
+    color: white;
+  }
+}
+
+.buttons {
+  position: relative;
+  margin-left: auto;
+}
+
+ul {
+  margin: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: auto;
+
+  ul {
+    margin: 0;
+    font-size: large;
+    width: 200px;
+    list-style-type: none;
+    li {
+      padding: 20px;
+    }
+  }
+
+  .history-list {
+    margin: 0;
+    font-size: large;
+    width: 500px;
+    list-style-type: none;
+
+    .history-list-item {
+      display: flex;
+      margin-bottom: 10px;
+      padding: 0;
+
+      .list-item-text {
+        padding: 0;
+        &:hover {
+          cursor: pointer;
+        }
+        &::before {
+          content: "\2713";
+          position: absolute;
+          left: 20px;
+          color: white;
+        }
+      }
+      .delete-list-item {
+        opacity: 1;
+        display: flex;
+        margin-left: auto;
+        display: inline-block;
+        color: white;
+        text-decoration: none;
+        padding: 0px 5px;
+        outline: none;
+        border: 2px;
+        border-style: solid;
+        border-color: #fd3a33;
+        background-color: #fc221a;
+        border-radius: 6px;
+        transition: 1s;
+        &:hover {
+          background-color: #a01a16;
+          transition: 1s;
+        }
+        &:active {
+          background-color: #3b0a08;
+        }
+      }
+    }
+  }
+
+  .content-flights {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .content-hotels {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .content-cars {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+}
+
+.location_selects {
+  margin: 0 20px 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.country-picker-container {
+  min-width: 200px;
+  max-width: 200px;
+  margin-right: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.city-picker {
+  min-width: 200px;
+  max-width: 200px;
+  margin-right: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.results {
+  margin-left: auto;
+}
+
+select {
+  border: 1px solid #aaa;
+  background-color: #fff;
+  width: inherit;
+  text-overflow: ellipsis;
+  border: 0;
+  border-radius: 5px;
+  font-size: 14px;
+  padding: 5px 15px 5px 15px;
+}
+
+.sidebar-list-item {
+  color: rgb(248, 248, 117);
+  transition: 0.3s ease-in-out;
+  &:hover {
+    cursor: pointer;
+    color: white;
+  }
+}
+.active {
+  color: white;
+}
+
+.hidden {
+  display: none;
+}
