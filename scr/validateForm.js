@@ -9,7 +9,7 @@ export function onFormSubmit(e) {
     console.log("form is valid");
     const values = getValues(e.target);
 
-    fetch("./../JSON_MOCK/MOCK_DATA.json")
+    fetch("https://valeryaleshka.github.io/AppcastTestApp/JSON_MOCK/MOCK_DATA.json")
       .then((response) => {
         if (response.ok) {
           const data = response.json();
