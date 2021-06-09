@@ -1,15 +1,23 @@
-import { renderMainPage } from "./renderPage";
+import { initMinDate } from "./calendarHandle.js";
+import { renderMainPage } from "./render.js";
 import { fillCities } from "./workWithApi";
 
 export function clearForm(e) {
-  if (e.target.id === "clearAll") {
+  if (e.target.classList.contains("clearAll")) {
     const $form = document.querySelector(".edited-form");
     const $inputs = $form.querySelectorAll(".form-input");
 
     $inputs.forEach((element) => {
       element.value = "";
     });
+    initMinDate();
+    clearResulst();
   }
+}
+
+export function clearResulst() {
+  const results = document.getElementById("results");
+  results.innerHTML = "";
 }
 
 export function deleteHistoryItem(e) {
@@ -40,4 +48,14 @@ export function initCitiesSelector(e) {
     const citypicker = container.querySelectorAll(".city-picker");
     fillCities(value, citypicker);
   }
+}
+
+export function createOptionsForSelecters(items) {
+  let options = "";
+  options += `<option value=""></option>`;
+  items.forEach((item) => {
+    options += `<option value="${item}">${item}</option>`;
+  });
+
+  return options;
 }

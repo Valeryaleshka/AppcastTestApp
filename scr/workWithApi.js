@@ -1,3 +1,5 @@
+import { createOptionsForSelecters } from "./functions.js";
+
 let countries = [];
 
 export function fillCities(countryName, citypicker) {
@@ -33,19 +35,9 @@ export function fillCountries(array) {
 }
 
 function renderCountries(array) {
-  array.forEach(($picker) => ($picker.innerHTML = createOptions(countries)));
+  array.forEach(($picker) => ($picker.innerHTML = createOptionsForSelecters(countries)));
 }
 
 function renderCyties(cyties, $element) {
-  $element.forEach(($picker) => ($picker.innerHTML = createOptions(cyties)));
-}
-
-function createOptions(items) {
-  let options = "";
-  options += `<option value=""></option>`;
-  items.forEach((item) => {
-    options += `<option value="${item}">${item}</option>`;
-  });
-
-  return options;
+  $element.forEach(($picker) => ($picker.innerHTML = createOptionsForSelecters(cyties)));
 }

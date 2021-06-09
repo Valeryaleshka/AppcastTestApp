@@ -39,9 +39,9 @@ export const pages = {
                     </div>
                     <div class="form-group">
                         <div class="country-picker-container">
-                            <label>Choose country:</label>
+                            <label>Choose city:</label>
                             <select id="cityFromPicker" class="city-picker form-input" name="cityFrom"
-                                data-validators="requiered">
+                               >
                             </select>
                             <div class="form-group--error-container">
                                 <span class="error-message error-message--requiered">Select location</span>
@@ -64,9 +64,8 @@ export const pages = {
                     </div>
                     <div class="form-group">
                         <div class="country-picker-container">
-                            <label>Choose country:</label>
-                            <select id="cityToPicker" class="city-picker form-input" name="cityTo"
-                                data-validators="requiered">
+                            <label>Choose city:</label>
+                            <select id="cityToPicker" class="city-picker form-input" name="cityTo">
                             </select>
                             <div class="form-group--error-container">
                                 <span class="error-message error-message--requiered">Select location</span>
@@ -75,7 +74,7 @@ export const pages = {
                     </div>
                 </section>
                 <section class="buttons">
-                    <button id='clearAll'>Clear</button>
+                    <div id='clearAll' class="clearAll">Clear</div>
                     <input type="submit" value="Search" id='submitForm'>
                 </section>
             </form>`;
@@ -109,11 +108,11 @@ export const pages = {
                     <label>Amenities:</label>
                     <select class="form-input" id="amenities" name="amenities" data-validators="requiered">
                         <option selected value=""></option>
-                        <option value="1*">1*</option>
-                        <option value="2*">2*</option>
-                        <option value="3*">3*</option>
-                        <option value="4*">4*</option>
-                        <option value="5*">5*</option>
+                        <option value="1">1*</option>
+                        <option value="2">2*</option>
+                        <option value="3">3*</option>
+                        <option value="4">4*</option>
+                        <option value="5">5*</option>
                     </select>
                     <div class="form-group--error-container">
                         <span class="error-message error-message--requiered">Select start date</span>
@@ -136,8 +135,8 @@ export const pages = {
                     </div>
                     <div class="form-group">
                         <div class="country-picker-container">
-                            <label>Choose country:</label>
-                            <select id="cityFromPicker" class="city-picker form-input" name="cityFrom" data-validators="requiered">
+                            <label>Choose city:</label>
+                            <select id="cityFromPicker" class="city-picker form-input" name="cityFrom" >
                             </select>
                             <div class="form-group--error-container">
                                 <span class="error-message error-message--requiered">Select location</span>
@@ -147,8 +146,8 @@ export const pages = {
                 </section>
 
                <section class="buttons">
-                    <button>Clear</button>
-                    <input type="submit" value="Search">
+                    <div id='clearAll' class="clearAll">Clear</div>
+                    <input type="submit" value="Search" id='submitForm'>
                 </section>
             </form>`;
   },
@@ -203,9 +202,8 @@ export const pages = {
                     </div>
                     <div class="form-group">
                         <div class="country-picker-container">
-                            <label>Choose country:</label>
-                            <select id="cityFromPicker" class="city-picker form-input" name="cityFrom"
-                                data-validators="requiered">
+                            <label>Choose city:</label>
+                            <select id="cityFromPicker" class="city-picker form-input" name="cityFrom">
                             </select>
                             <div class="form-group--error-container">
                                 <span class="error-message error-message--requiered">Select location</span>
@@ -215,8 +213,8 @@ export const pages = {
                 </section>
             
               <section class="buttons">
-                    <button>Clear</button>
-                    <input type="submit" value="Search">
+                     <div id='clearAll' class="clearAll">Clear</div>
+                    <input type="submit" value="Search" id='submitForm'>
                 </section>
             </form>`;
   },
@@ -233,6 +231,7 @@ export const pages = {
 
         </div> `;
   },
+
   searchHistory() {
     const history = JSON.parse(window.localStorage.getItem("history"));
     let divs = "<ul class='history-list'>";
@@ -258,7 +257,7 @@ const historyElements = {
     return `<li class="history-list-item" data-id="${element.id}">
         <p class="list-item-text">Flight ${firstDate.toDateString().substr(3)} - ${secondDate
       .toDateString()
-      .substr(3)}  ${element.cityFrom} - ${element.cityTo} </p><button class="delete-list-item">Delete</button>
+      .substr(3)}  ${element.countryFrom} - ${element.countryTo} </p><button class="delete-list-item">Delete</button>
     </li>`;
   },
   hotelsEditForm(element) {
@@ -268,7 +267,7 @@ const historyElements = {
     return `<li class="history-list-item" data-id="${element.id}">
         <p class="list-item-text"> Hotel ${firstDate.toDateString().substr(3)} - ${secondDate
       .toDateString()
-      .substr(3)}  ${element.cityFrom} - ${element.amenities} </p><button class="delete-list-item">Delete</button>
+      .substr(3)}  ${element.countryFrom} - ${element.amenities}* </p><button class="delete-list-item">Delete</button>
     </li>`;
   },
   carsEditForm(element) {
@@ -278,7 +277,79 @@ const historyElements = {
     return `<li class="history-list-item" data-id="${element.id}">
         <p class="list-item-text"> Car ${firstDate.toDateString().substr(3)} - ${secondDate
       .toDateString()
-      .substr(3)}  ${element.cityFrom} - ${element.carClass} </p><button class="delete-list-item">Delete</button>
+      .substr(3)}  ${element.countryFrom} - ${element.carClass} </p><button class="delete-list-item">Delete</button>
     </li>`;
+  },
+};
+
+export const resultsPage = {
+  flightsEditForm(array, value) {
+    let divs = "<ul>";
+    if (array && array.length > 0) {
+      array.forEach((element) => {
+        let resultItem = resultsPageComponents.flightsEditForm(element);
+        divs += resultItem;
+      });
+      divs += "</ul>";
+    }
+
+    return divs;
+  },
+  hotelsEditForm(array, value) {
+    let divs = "<ul>";
+    if (array && array.length > 0) {
+      array.forEach((element) => {
+        let resultItem = resultsPageComponents.hotelsEditForm(element);
+        divs += resultItem;
+      });
+      divs += "</ul>";
+    }
+
+    return divs;
+  },
+
+  carsEditForm(array, value) {
+    let divs = "<ul>";
+    if (array && array.length > 0) {
+      array.forEach((element) => {
+        let resultItem = resultsPageComponents.carsEditForm(element, value.carClass);
+        divs += resultItem;
+      });
+      divs += "</ul>";
+    }
+
+    return divs;
+  },
+};
+
+const resultsPageComponents = {
+  flightsEditForm(object) {
+    const resultDate = new Date(object.date);
+    return `    
+      <li >
+        <p >          
+          Flights ${resultDate.toDateString().substr(3)} ${object.countryFrom} - ${object.avia} Airline 
+        </p>       
+      </li>
+      `;
+  },
+  hotelsEditForm(object) {
+    const resultDate = new Date(object.date);
+    return `    
+      <li >
+        <p>          
+          Hotel ${resultDate.toDateString().substr(3)} ${object.countryFrom} - Hotel ${object.hotel}* 
+        </p>       
+      </li>
+      `;
+  },
+  carsEditForm(object, carClass) {
+    const resultDate = new Date(object.date);
+    return `
+      <li >
+        <p >
+          Car ${resultDate.toDateString().substr(3)} ${object.countryFrom} - car ${object[carClass]}
+        </p>
+      </li>`;
   },
 };

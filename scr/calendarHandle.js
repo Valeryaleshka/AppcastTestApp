@@ -9,7 +9,7 @@ export function initMinDate() {
 }
 
 function getCurrentDate() {
-  let today = new Date();
+  const today = new Date();
   let dayIsToday = today.getDate();
   let monthIsToday = today.getMonth() + 1;
   const yearIsToday = today.getFullYear();

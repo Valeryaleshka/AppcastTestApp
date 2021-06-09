@@ -1,4 +1,5 @@
 import { getInputs } from "./inputs";
+import { renderResults } from "./render";
 import { VALIDATOR } from "./validator";
 
 export function onFormSubmit(e) {
@@ -8,7 +9,33 @@ export function onFormSubmit(e) {
     console.log("form is valid");
     const values = getValues(e.target);
 
-    //create some fetch to submit form
+    fetch("./../JSON_MOCK/MOCK_DATA.json")
+      .then((response) => {
+        if (response.ok) {
+          const data = response.json();
+          data.then((value) => {
+            const filteretData = value.filter((el) => {
+              if (values.type === "hotelsEditForm") {
+                return (
+                  new Date(el.date) >= new Date(values.firstDate) &&
+                  new Date(el.date) <= new Date(values.secondDate) &&
+                  el.countryFrom.toLowerCase() === values.countryFrom.toLowerCase() &&
+                  el.amenities == values.amenities
+                );
+              }
+              return (
+                new Date(el.date) >= new Date(values.firstDate) &&
+                new Date(el.date) <= new Date(values.secondDate) &&
+                el.countryFrom.toLowerCase() === values.countryFrom.toLowerCase()
+              );
+            });
+            renderResults(values.type, filteretData, values);
+          });
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
 
     let myStorage = window.localStorage.getItem("history");
     if (myStorage) {

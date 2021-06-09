@@ -1,5 +1,5 @@
-import { renderMainPage, renderPageComponent } from "./renderPage";
-import { initPage } from "./script";
+import { renderMainPage, renderPageComponent } from "./render.js";
+import { initPage } from "./main.js";
 
 export function checkCurrentPage(e) {
   if (e.target.classList.contains("sidebar-list-item")) {

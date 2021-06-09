@@ -1,5 +1,5 @@
 import "./../styles/styles.scss";
-import { initMinDate, changeCalendarValue } from "./date.js";
+import { initMinDate, changeCalendarValue } from "./calendarHandle.js";
 import { fillCountries } from "./workWithApi.js";
 import { onFormSubmit } from "./validateForm.js";
 import { backToMainWithParameters, clearForm, deleteHistoryItem, initCitiesSelector } from "./functions.js";
