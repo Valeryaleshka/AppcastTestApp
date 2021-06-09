@@ -1,4 +1,5 @@
 import { renderMainPage } from "./renderPage";
+import { fillCities } from "./workWithApi";
 
 export function clearForm(e) {
   if (e.target.id === "clearAll") {
@@ -29,5 +30,14 @@ export function backToMainWithParameters(e) {
     const jsonCurrentStorage = JSON.parse(currentStorage);
     const idObject = jsonCurrentStorage.filter((elem) => elem.id === listItem.dataset.id)[0];
     renderMainPage("search", idObject);
+  }
+}
+
+export function initCitiesSelector(e) {
+  if (e.target.classList.contains("country")) {
+    const value = e.target.value;
+    const container = e.target.closest(".location-form-container");
+    const citypicker = container.querySelectorAll(".city-picker");
+    fillCities(value, citypicker);
   }
 }

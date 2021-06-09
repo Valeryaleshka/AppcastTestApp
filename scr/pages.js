@@ -253,7 +253,7 @@ export const pages = {
 const historyElements = {
   flightsEditForm(element) {
     const firstDate = new Date(element.firstDate);
-    const secondDate = new Date(element.firstDate);
+    const secondDate = new Date(element.secondDate);
 
     return `<li class="history-list-item" data-id="${element.id}">
         <p class="list-item-text">Flight ${firstDate.toDateString().substr(3)} - ${secondDate
@@ -263,7 +263,7 @@ const historyElements = {
   },
   hotelsEditForm(element) {
     const firstDate = new Date(element.firstDate);
-    const secondDate = new Date(element.firstDate);
+    const secondDate = new Date(element.secondDate);
 
     return `<li class="history-list-item" data-id="${element.id}">
         <p class="list-item-text"> Hotel ${firstDate.toDateString().substr(3)} - ${secondDate
@@ -273,7 +273,7 @@ const historyElements = {
   },
   carsEditForm(element) {
     const firstDate = new Date(element.firstDate);
-    const secondDate = new Date(element.firstDate);
+    const secondDate = new Date(element.secondDate);
 
     return `<li class="history-list-item" data-id="${element.id}">
         <p class="list-item-text"> Car ${firstDate.toDateString().substr(3)} - ${secondDate
