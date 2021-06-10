@@ -59,3 +59,14 @@ export function createOptionsForSelecters(items) {
 
   return options;
 }
+
+export function saveResultToHistory(values) {
+  let myStorage = window.localStorage.getItem("history");
+  if (myStorage) {
+    const array = JSON.parse(myStorage);
+    array.push(values);
+    localStorage.setItem("history", JSON.stringify(array));
+  } else {
+    localStorage.setItem("history", JSON.stringify([values]));
+  }
+}

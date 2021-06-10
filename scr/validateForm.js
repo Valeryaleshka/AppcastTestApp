@@ -1,3 +1,4 @@
+import { saveResultToHistory } from "./functions";
 import { getInputs } from "./inputs";
 import { renderResults } from "./render";
 import { VALIDATOR } from "./validator";
@@ -30,6 +31,9 @@ export function onFormSubmit(e) {
               );
             });
 
+            if (filteretData.length > 0) {
+              saveResultToHistory(values);
+            }
             renderResults(values.type, filteretData, values);
           });
         }
@@ -37,15 +41,6 @@ export function onFormSubmit(e) {
       .catch((err) => {
         console.error(err);
       });
-
-    let myStorage = window.localStorage.getItem("history");
-    if (myStorage) {
-      const array = JSON.parse(myStorage);
-      array.push(values);
-      localStorage.setItem("history", JSON.stringify(array));
-    } else {
-      localStorage.setItem("history", JSON.stringify([values]));
-    }
   } else {
     console.log("form is not valid");
   }
