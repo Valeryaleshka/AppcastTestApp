@@ -21,12 +21,15 @@ export function renderMainPage(page, object) {
           if (input.name === element) {
             setTimeout(() => {
               input.value = object[element];
-              const formsubmitButton = document.getElementById("submitForm");
-              formsubmitButton.click();
             }, 200);
           }
         });
       });
+
+      setTimeout(() => {
+        const formsubmitButton = document.getElementById("submitForm");
+        formsubmitButton.click();
+      }, 500);
     } else {
       renderPageComponent("flightsEditForm");
       initPage();
@@ -43,5 +46,10 @@ export function renderPageComponent(componentName) {
 
 export function renderResults(type, array, value) {
   const resultsContainer = document.getElementById("results");
-  resultsContainer.innerHTML = resultsPage[type](array, value);
+  if (array.length === 0) {
+    resultsContainer.innerHTML = resultsPage.noMatches();
+  } else {
+    const resultsContainer = document.getElementById("results");
+    resultsContainer.innerHTML = resultsPage[type](array, value);
+  }
 }

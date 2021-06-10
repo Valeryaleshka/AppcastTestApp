@@ -29,6 +29,7 @@ export function onFormSubmit(e) {
                 el.countryFrom.toLowerCase() === values.countryFrom.toLowerCase()
               );
             });
+
             renderResults(values.type, filteretData, values);
           });
         }

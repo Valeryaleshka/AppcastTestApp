@@ -320,6 +320,14 @@ export const resultsPage = {
 
     return divs;
   },
+
+  noMatches() {
+    return `<ul><li>
+        <p >          
+          no Matches
+        </p>       
+      </li></ul>`;
+  },
 };
 
 const resultsPageComponents = {
