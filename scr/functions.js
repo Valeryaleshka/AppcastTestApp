@@ -37,6 +37,7 @@ export function backToMainWithParameters(e) {
     const currentStorage = window.localStorage.getItem("history");
     const jsonCurrentStorage = JSON.parse(currentStorage);
     const idObject = jsonCurrentStorage.filter((elem) => elem.id === listItem.dataset.id)[0];
+
     renderMainPage("search", idObject);
   }
 }

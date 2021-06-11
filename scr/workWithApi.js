@@ -1,6 +1,22 @@
-import { createOptionsForSelecters } from "./functions.js";
+import { backToMainWithParameters, createOptionsForSelecters } from "./functions.js";
 
 let countries = [];
+
+export const fillCountiesProm = new Promise((resolve, reject) => {
+  fetch("https://restcountries.eu/rest/v2/all")
+    .then((response) => {
+      if (response.ok) {
+        const data = response.json();
+        data.then((value) => {
+          let countries = value.map((el) => el.name);
+          resolve(countries);
+        });
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+});
 
 export function fillCities(countryName, citypicker) {
   fetch("https://restcountries.eu/rest/v2/all")
