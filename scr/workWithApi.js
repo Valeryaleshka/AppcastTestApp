@@ -25,7 +25,7 @@ export function fillCountries(array) {
         const data = response.json();
         data.then((value) => {
           countries = value.map((el) => el.name);
-          renderCountries(array);
+          renderCountries(array, countries);
         });
       }
     })
@@ -34,7 +34,7 @@ export function fillCountries(array) {
     });
 }
 
-function renderCountries(array) {
+export function renderCountries(array, countries) {
   array.forEach(($picker) => ($picker.innerHTML = createOptionsForSelecters(countries)));
 }
 
