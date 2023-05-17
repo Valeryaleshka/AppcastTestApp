@@ -3,7 +3,7 @@ import { createOptionsForSelecters } from "./functions.js";
 let countries = [];
 
 export function fillCities(countryName, citypicker) {
-  fetch("https://restcountries.eu/rest/v2/all")
+  fetch("https://restcountries.com/v3.1/all")
     .then((response) => {
       if (response.ok) {
         const data = response.json();
